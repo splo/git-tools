@@ -1,0 +1,13 @@
+#!/bin/bash
+BRANCHES=$(git branch --merged | egrep -v '(^\*|master)')
+[[ -z "${BRANCHES}" ]] && {
+  echo "No branch to delete"
+  exit
+}
+echo "Confirm deletion of the following branches:"
+echo "${BRANCHES}"
+echo -n "y/n "
+read answer
+[[ ${answer} = 'y' ]] && {
+  git branch -d $(echo ${BRANCHES})
+}
