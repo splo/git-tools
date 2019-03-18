@@ -7,7 +7,7 @@ BRANCHES=$(git branch --merged | grep -E -v '(^\*|master)')
 echo "Confirm deletion of the following branches:"
 echo "${BRANCHES}"
 echo -n "y/n "
-read answer
 [[ ${answer} = 'y' ]] && {
   git branch -d $(echo ${BRANCHES})
+read -r answer
 }
