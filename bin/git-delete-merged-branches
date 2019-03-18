@@ -1,5 +1,5 @@
 #!/bin/bash
-BRANCHES=$(git branch --merged | egrep -v '(^\*|master)')
+BRANCHES=$(git branch --merged | grep -E -v '(^\*|master)')
 [[ -z "${BRANCHES}" ]] && {
   echo "No branch to delete"
   exit
