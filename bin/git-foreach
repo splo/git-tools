@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+find . -mindepth 1 -maxdepth 1 | while read dir; do
+    [[ -d "${dir}/.git" ]] && {
+        pushd "${dir}" >/dev/null
+        echo "# ${dir}"
+        eval "$@"
+        popd >/dev/null
+    }
+done
